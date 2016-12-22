@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 
   s.name         = "SwitchHost"
 
-  s.version      = "1.0.2.swift-version"
+  s.version      = "1.0.3.swift-version"
 
   s.summary      = "a simple viewController for siwtch hosts"
 
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/TieShanWang/SwitchHost.git", :tag => "1.0.2.swift-version" }
+  s.source       = { :git => "https://github.com/TieShanWang/SwitchHost.git", :tag => "1.0.3.swift-version" }
 
   s.source_files  = "SwitchHost/SwitchHost/**/*.{swift}"
 
