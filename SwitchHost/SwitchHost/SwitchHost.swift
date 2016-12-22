@@ -143,8 +143,9 @@ extension SwitchHost {
         
         // 从未选择，加载默认
         if currentName.isEmpty {
-            if hostView.viewModel.plistHostList.contains(currentName) {
-                data?(data: hostView.viewModel.getPlistContent(currentName) as? [String : String])
+            if hostView.viewModel.plistHostList.contains(defaultURLName) {
+                hostView.viewModel.currentHostName = defaultURLName
+                data?(data: hostView.viewModel.getPlistContent(defaultURLName) as? [String : String])
                 return
             }else {
                 fatalError("SwitchHost error: can not find the defaultURLName \(defaultURLName) ")
