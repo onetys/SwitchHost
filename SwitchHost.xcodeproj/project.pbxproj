@@ -16,7 +16,7 @@
 		3C5085011E0BA76000288989 /* SwitchHostDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5084FC1E0BA76000288989 /* SwitchHostDetailTableViewController.swift */; };
 		3C5085021E0BA76000288989 /* SwitchHostEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5084FD1E0BA76000288989 /* SwitchHostEditorTableViewController.swift */; };
 		3C5085031E0BA76000288989 /* SwitchHostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5084FE1E0BA76000288989 /* SwitchHostViewModel.swift */; };
-		3C50850F1E0BA82300288989 /* SwitchHost.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C50850E1E0BA82300288989 /* SwitchHost.plist */; };
+		3C50850F1E0BA82300288989 /* customHost.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C50850E1E0BA82300288989 /* customHost.plist */; };
 		3C5085171E0BAA6100288989 /* urls_0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C5085141E0BAA6100288989 /* urls_0.plist */; };
 		3C5085181E0BAA6100288989 /* urls_1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C5085151E0BAA6100288989 /* urls_1.plist */; };
 		3C5085191E0BAA6100288989 /* urls_2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C5085161E0BAA6100288989 /* urls_2.plist */; };
@@ -34,7 +34,7 @@
 		3C5084FC1E0BA76000288989 /* SwitchHostDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchHostDetailTableViewController.swift; sourceTree = "<group>"; };
 		3C5084FD1E0BA76000288989 /* SwitchHostEditorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchHostEditorTableViewController.swift; sourceTree = "<group>"; };
 		3C5084FE1E0BA76000288989 /* SwitchHostViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchHostViewModel.swift; sourceTree = "<group>"; };
-		3C50850E1E0BA82300288989 /* SwitchHost.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SwitchHost.plist; sourceTree = "<group>"; };
+		3C50850E1E0BA82300288989 /* customHost.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = customHost.plist; sourceTree = "<group>"; };
 		3C5085141E0BAA6100288989 /* urls_0.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = urls_0.plist; sourceTree = "<group>"; };
 		3C5085151E0BAA6100288989 /* urls_1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = urls_1.plist; sourceTree = "<group>"; };
 		3C5085161E0BAA6100288989 /* urls_2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = urls_2.plist; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 				3C5084F91E0BA76000288989 /* SwitchHost */,
 				3C5084E71E0BA73C00288989 /* AppDelegate.swift */,
 				3C5084E91E0BA73C00288989 /* ViewController.swift */,
-				3C50850E1E0BA82300288989 /* SwitchHost.plist */,
+				3C50850E1E0BA82300288989 /* customHost.plist */,
 				3C5085141E0BAA6100288989 /* urls_0.plist */,
 				3C5085151E0BAA6100288989 /* urls_1.plist */,
 				3C5085161E0BAA6100288989 /* urls_2.plist */,
@@ -160,7 +160,7 @@
 				3C5085171E0BAA6100288989 /* urls_0.plist in Resources */,
 				3C5084ED1E0BA73C00288989 /* Main.storyboard in Resources */,
 				3C5085181E0BAA6100288989 /* urls_1.plist in Resources */,
-				3C50850F1E0BA82300288989 /* SwitchHost.plist in Resources */,
+				3C50850F1E0BA82300288989 /* customHost.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

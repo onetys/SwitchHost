@@ -54,10 +54,15 @@ class SwitchHostViewModel {
     // 本地plist
     lazy var plistHostList: [String] = {
         var plist = [String]()
-        guard let path = NSBundle.mainBundle().pathForResource(self.localURLPlistName, ofType: "plist"), let result = NSArray.init(contentsOfFile: path) as? [String] else {
-            return plist
+        guard let path = NSBundle.mainBundle().pathForResource(self.localURLPlistName, ofType: "plist") else {
+            fatalError("SwitchHost error: can not find a plist named \(self.localURLPlistName)")
         }
-        return result
+        if let result = NSArray.init(contentsOfFile: path) as? [String] {
+            return result
+        }else {
+            fatalError("SwitchHost error: check the content of \(self.localURLPlistName)")
+        }
+        
     }()
     
 }

@@ -2,11 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>IOUsAppUrl</key>
+	<key>baidu</key>
 	<string>http://www.baidu.com</string>
-	<key>UserAppUrl</key>
+	<key>tengxun</key>
 	<string>http://www.baidu.com</string>
-	<key>AppVersionUrl</key>
+	<key>xiaomi</key>
 	<string>http://www.baidu.com</string>
 </dict>
 </plist>

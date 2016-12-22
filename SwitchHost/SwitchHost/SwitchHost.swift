@@ -15,10 +15,13 @@ private let SwitchHostViewControllerCellReuseID = "SwitchHostViewControllerCellR
 
 class SwitchHost : UITableViewController{
     
-    private var viewModel: SwitchHostViewModel = SwitchHostViewModel()
+    var viewModel: SwitchHostViewModel = SwitchHostViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let _ = self.navigationController else {
+            fatalError("SwitchHost must be in a navigationController")
+        }
         self.title = "SwitchHost"
         self.commitInitView()
     }
@@ -53,15 +56,100 @@ class SwitchHost : UITableViewController{
     }
     
     func addNewURL() {
-        self.navigationController?.pushViewController(SwitchHostEditorTableViewController(), animated: true)
-    }
-    
-    class func switchHostView(alterData: ((data: [String : String])->Void)?) -> UINavigationController {
-        let switchHost = SwitchHost()
-        switchHost.viewModel.alterData = alterData
-        return UINavigationController.init(rootViewController: switchHost)
+        let add = SwitchHostEditorTableViewController()
+        add.viewModel = self.viewModel
+        self.navigationController?.pushViewController(add, animated: true)
     }
 }
+
+
+// MARK: - public method
+
+// MARK: - 获取上次选择的数据
+extension SwitchHost {
+    /**
+     获取上次使用 SwitchHost 选择的URL，如果检测从未选择，则在 SwitchHost.plist 文件中找到 defaultURLName 的文件加载数据
+     
+     - parameter defaultURLName: 默认的URL 名称
+     - parameter data:           回调数据
+     */
+    class func getLastSaveData(defaultURLName: String, data: ((data: [String : String]?)->Void)?) {
+        self.getLastSaveData(defaultURLName, configure: nil, data: data)
+    }
+    
+    /**
+     获取上次使用 SwitchHost 选择的URL，如果检测从未选择，则在 SwitchHost.plist 文件中找到 defaultURLName 的文件加载数据
+     
+     - parameter defaultURLName: 默认的URL 名称
+     - parameter configure:      配置host
+     - parameter data:           回调数据
+     */
+    class func getLastSaveData(defaultURLName: String, configure: ((host: SwitchHost)->Void)?, data: ((data: [String : String]?)->Void)?) {
+        
+        let hostView = SwitchHost()
+        
+        configure?(host: hostView)
+        
+        let currentName = hostView.viewModel.currentHostName
+        
+        // 从未选择，加载默认
+        if currentName.isEmpty {
+            if hostView.viewModel.plistHostList.contains(defaultURLName) {
+                hostView.viewModel.currentHostName = defaultURLName
+                data?(data: hostView.viewModel.getPlistContent(defaultURLName) as? [String : String])
+                return
+            }else {
+                fatalError("SwitchHost error: can not find the defaultURLName \(defaultURLName) ")
+            }
+        }
+        
+        // 在 SwitchHost.plist 中 查找
+        if hostView.viewModel.plistHostList.contains(currentName) {
+            data?(data: hostView.viewModel.getPlistContent(currentName) as? [String : String])
+            return
+        }
+        
+        data?(data: hostView.viewModel.getLocalContent(currentName) as? [String : String])
+        
+    }
+    
+    /**
+     create a new switch host view
+     
+     - parameter alterData: url data
+     
+     - returns: a new switch host view
+     */
+    class func switchHostView(alterData: ((data: [String : String])->Void)?) -> SwitchHost {
+        let switchHost = SwitchHost()
+        switchHost.viewModel.alterData = alterData
+        return switchHost
+    }
+    
+    /**
+     mainBundle 中存储 plist 列表的文件名 eg: SwitchHostName
+     
+     - parameter name: 文件名
+     */
+    func setURLPlistName(name: String) {
+        self.viewModel.localURLPlistName = name
+    }
+    
+    /**
+     URL 对应的中文解释 placeHolder
+     
+     - parameter names: explain
+     */
+    func setShowName(names: [String]) {
+        
+        if self.viewModel.urlNames.count != names.count {
+            fatalError("SwitchHost error: check show name : \(names)")
+        }
+        
+        self.viewModel.showName = names
+    }
+}
+
 
 // MARK: - show
 
@@ -124,43 +212,6 @@ extension SwitchHost{
         self.navigationController?.pushViewController(show, animated: true)
     }
     
-}
-
-// MARK: - 获取上次选择的数据
-extension SwitchHost {
-    
-    /**
-     获取上次使用 SwitchHost 选择的URL，如果检测从未选择，则在 SwitchHost.plist 文件中找到 defaultURLName 的文件加载数据
-     
-     - parameter defaultURLName: 默认的URL 名称
-     - parameter data:           回调数据
-     */
-    class func getLastSaveData(defaultURLName: String, data: ((data: [String : String]?)->Void)?) {
-        
-        let hostView = SwitchHost()
-        
-        let currentName = hostView.viewModel.currentHostName
-        
-        // 从未选择，加载默认
-        if currentName.isEmpty {
-            if hostView.viewModel.plistHostList.contains(defaultURLName) {
-                hostView.viewModel.currentHostName = defaultURLName
-                data?(data: hostView.viewModel.getPlistContent(defaultURLName) as? [String : String])
-                return
-            }else {
-                fatalError("SwitchHost error: can not find the defaultURLName \(defaultURLName) ")
-            }
-        }
-        
-        // 在 SwitchHost.plist 中 查找
-        if hostView.viewModel.plistHostList.contains(currentName) {
-            data?(data: hostView.viewModel.getPlistContent(currentName) as? [String : String])
-            return
-        }
-        
-        data?(data: hostView.viewModel.getLocalContent(currentName) as? [String : String])
-        
-    }
 }
 
 

@@ -10,7 +10,7 @@ import UIKit
 
 class SwitchHostEditorTableViewController: UIViewController {
     
-    private var viewModel: SwitchHostViewModel = SwitchHostViewModel()
+    weak var viewModel: SwitchHostViewModel!
     
     private var scrollView: UIScrollView!
     
