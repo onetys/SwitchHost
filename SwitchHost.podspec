@@ -4,12 +4,13 @@ Pod::Spec.new do |s|
 
   s.name         = "SwitchHost"
 
-  s.version      = "1.0.0"
+  s.version      = "1.0.0.swift-version"
 
   s.summary      = "a simple viewController for siwtch hosts"
 
   s.description  = <<-DESC
-  a simple viewController for siwtch hosts .DESC
+  a simple viewController for siwtch hosts.
+  DESC
 
   s.homepage     = "https://github.com/TieShanWang/SwitchHost"
 
@@ -17,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.author             = { "wangtieshan" => "15003836653@163.com" }
 
-  s.platform     = :ios, "7.0"
+  s.platform     = :ios, "8.0"
 
   s.source       = { :git => "https://github.com/TieShanWang/SwitchHost.git", :tag => "1.0.0" }
 
