@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/TieShanWang/SwitchHost.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/TieShanWang/SwitchHost.git", :tag => "1.0.0.swift-version" }
 
   s.source_files  = "SwitchHost/SwitchHost/**/*.{swift}"
 
