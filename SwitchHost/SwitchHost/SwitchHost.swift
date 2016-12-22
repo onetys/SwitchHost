@@ -15,7 +15,7 @@ private let SwitchHostViewControllerCellReuseID = "SwitchHostViewControllerCellR
 
 class SwitchHost : UITableViewController{
     
-    var viewModel: SwitchHostViewModel = SwitchHostViewModel()
+    private var viewModel: SwitchHostViewModel = SwitchHostViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,5 +125,44 @@ extension SwitchHost{
     }
     
 }
+
+// MARK: - 获取上次选择的数据
+extension SwitchHost {
+    
+    /**
+     获取上次使用 SwitchHost 选择的URL，如果检测从未选择，则在 SwitchHost.plist 文件中找到 defaultURLName 的文件加载数据
+     
+     - parameter defaultURLName: 默认的URL 名称
+     - parameter data:           回调数据
+     */
+    class func getLastSaveData(defaultURLName: String, data: ((data: [String : String]?)->Void)?) {
+        
+        let hostView = SwitchHost()
+        
+        let currentName = hostView.viewModel.currentHostName
+        
+        // 从未选择，加载默认
+        if currentName.isEmpty {
+            if hostView.viewModel.plistHostList.contains(currentName) {
+                data?(data: hostView.viewModel.getPlistContent(currentName) as? [String : String])
+                return
+            }else {
+                fatalError("SwitchHost error: can not find the defaultURLName \(defaultURLName) ")
+            }
+        }
+        
+        // 在 SwitchHost.plist 中 查找
+        if hostView.viewModel.plistHostList.contains(currentName) {
+            data?(data: hostView.viewModel.getPlistContent(currentName) as? [String : String])
+            return
+        }
+        
+        data?(data: hostView.viewModel.getLocalContent(currentName) as? [String : String])
+        
+    }
+}
+
+
+
 
 
